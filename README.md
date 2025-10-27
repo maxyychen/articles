@@ -11,7 +11,7 @@ Learn effective techniques for using AI including RAG (Retrieval-Augmented Gener
 
 ### [Generative AI in Software Engineering: The Dawn of a New Era](generative_ai_in_software_engineering.md)
 
-Recommended workflows for AI-assisted development
+Recommended workflows for AI-assisted development: Plan, Review and Implement.
 
 
 
