@@ -1,4 +1,4 @@
-# Automated Handover Summary Note System
+# A Two-Stage Generative AI Strategy for Automated Nurse Handover Notes
 
 ## Overview
 

@@ -20,7 +20,7 @@ Recommended workflows for AI-assisted development: Plan, Review and Implement.
 
 
 
-### [Automated Handover Summary System](handover_system_design.md)
+### [A Two-Stage Generative AI Strategy for Automated Nurse Handover Notes](handover_system_design.md)
 
 A system design for automating nursing handover notes generation using AI. Features a two-stage generation strategy that uses local Ollama API to reduce costs and leverages commercial APIs for performance.
 
