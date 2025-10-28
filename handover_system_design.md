@@ -303,26 +303,16 @@ The system automatically generates handover summary notes from patient data coll
 - Immutable logs: Use append-only storage to prevent tampering
 
 **Data Anonymization/De-identification** (Optional):
-- **Option 1**: Replace patient identifiers before sending to external API
-  - Remove: Name, MRN, date of birth, exact dates (use relative dates)
-  - Keep: Clinical data necessary for summary generation
-  - Re-identify results after receiving from API
-- **Option 2**: Pseudonymization
+- Pseudonymization
   - Replace real identifiers with pseudonyms
   - Maintain mapping table (encrypted, access-controlled)
 - Trade-off: May reduce AI quality if too much information removed
 
 **Pre-Send Validation**:
 - Scan outgoing requests for sensitive data patterns
-- Block requests containing: SSN, credit cards, unnecessary PII
+- Block requests containing: patient ID, Name, address etc.
 - Whitelist only required data fields for summary generation
 - Alert if non-clinical data detected
-
-**BAA (Business Associate Agreement) Validation**:
-- Verify BAA is in place before enabling external API
-- Check API provider compliance certifications (HIPAA, SOC 2, ISO 27001)
-- Monitor BAA expiration and renewal dates
-- Block API calls if BAA is not active
 
 **Access Control & Monitoring**:
 - Role-based access: Track which users/services trigger external API calls
@@ -340,7 +330,7 @@ The system automatically generates handover summary notes from patient data coll
 - Generate monthly reports: Volume of PHI sent, API providers used, access patterns
 - Breach detection: Alert if data sent to unauthorized endpoints
 - Audit trail for regulatory inspections
-- Dashboard for compliance officers
+- Dashboard for compliance monitor
 
 #### Implementation Options
 
