@@ -11,3 +11,35 @@ In the meantime, multi-agent systems have proven effective in many fields, such 
 
 Working at the intersection of AI and healthcare, I'm committed to developing intelligent tools that empower clinicians to deliver better patient care. This is where my journey continues.
 
+## Research Challenges and Future Directions
+
+As multi-agent systems evolve, several critical challenges remain that drive my research interests:
+
+### 1. Trust and Reliability
+- How can we ensure multi-agent systems produce consistent, verifiable outputs?
+- Developing mechanisms to detect and prevent hallucinations in agent-to-agent communication
+- Building audit trails for agent decisions in high-stakes domains like healthcare
+
+### 2. Coordination and Communication
+- Optimizing agent collaboration without excessive inter-agent communication overhead
+- Designing efficient protocols for agent consensus and conflict resolution
+- Balancing autonomy with centralized coordination
+
+### 3. Scalability and Performance
+- Managing computational costs as the number of agents increases
+- Efficient task decomposition and dynamic load balancing
+- Minimizing latency in real-time multi-agent applications
+
+### 4. Safety and Alignment
+- Ensuring emergent behaviors align with human values and intentions
+- Preventing adversarial agents from compromising system integrity
+- Establishing safety boundaries for autonomous agent actions
+
+### 5. Explainability and Transparency
+- Making multi-agent decision-making processes interpretable to end users
+- Tracking responsibility and accountability in distributed agent systems
+- Visualizing complex agent interactions for debugging and validation
+
+
+These challenges represent opportunities to push the boundaries of what multi-agent systems can achieve, particularly in healthcare where trust, safety, and explainability are paramount.
+
