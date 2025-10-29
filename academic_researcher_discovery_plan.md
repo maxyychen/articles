@@ -1,4 +1,4 @@
-# Academic Researcher Discovery Crawler
+# Academic Researcher Discovery - Multi-Agent Approach
 
 A specialized multi-agent web crawler for discovering professors and researchers in specific fields, extracting their profiles, publications, affiliations, and contact information.
 
