@@ -7,9 +7,6 @@ In early 2025, Claude Code appeared, which changed my workflow for building soft
 
 I've started thinking about how to leverage LLM agents and make it work in a reliable and trustworthy way. Today we can easily implement LLM agents who can using external tools to perform complex tasks, such as searches, database operations, external API calls, and more ([Agent, Tools, and MCP: Complete Data Flow Guide](agent_tools_dataflow.md)). We can even integrate multiple LLM agents into a multi-agent system to undertake complex tasks([Multi-Agent AI Frameworks: Comprehensive Comparison (2025)](multi_agent_frameworks_comparison.md)).
 
-For example, I created a multi-agent system that discovers researchers and their publications automatically. I followed the [Multi-Agent System Design Guidelines](multi_agent_system_design_guidelines.md) and developed an implementation plan for [Academic Researcher Discovery](academic_researcher_discovery_plan.md). This is an example of how we can leverage multiple LLM agents to make our lives easier.
-
-
 
 In the meantime, multi-agent systems have proven effective in many fields, such as building software with minimal human intervention (Devin, ChatDev), self-driving vehicles, scientific discovery, and healthcare.([Multi-Agent LLM Healthcare Review Article](Multi-Agent_LLM_Healthcare_Review_Article.md)).
 
