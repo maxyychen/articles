@@ -1,7 +1,7 @@
 
 ## The Journey of My LLM Experience
 
-When I first encountered ChatGPT, I was amazed by its ability to communicate like a human. However, I quickly learned that not everything it says is correct—you need to be careful when using LLMs. I share my experience in this note: [How to Use Generative AI: A Practical Guide](effective_ai_prompting_guide.md).
+When I first encountered ChatGPT, I was amazed by its ability to communicate like a human. However, I quickly learned that not everything it says is correct—you need to be careful when using LLMs. I share my experience in this note: [How to Use Generative AI to reduce hallucinations: A Practical Guide](effective_ai_prompting_guide.md).
 
 In early 2025, Claude Code appeared, which changed my workflow for building software. Since then, I focus more on design and testing rather than writing code.[Generative AI in Software Engineering: The Dawn of a New Era](generative_ai_in_software_engineering.md).
 
