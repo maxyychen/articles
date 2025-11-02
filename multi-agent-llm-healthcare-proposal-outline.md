@@ -4,7 +4,7 @@
 
 ### 1.1 Background and Context
 
-Healthcare delivery is inherently complex, involving interdisciplinary coordination across multiple specialties, departments, and information systems. Despite decades of health information technology investment, clinical workflows remain characterized by inefficiencies, bottlenecks, communication gaps, and suboptimal adherence to evidence-based guidelines. These challenges result in delayed care, increased costs, clinician burnout, and preventable adverse patient outcomes.
+Healthcare delivery is inherently complex, involving interdisciplinary coordination across multiple specialties, departments, and information systems. Despite of health information technology investment, clinical workflows remain characterized by inefficiencies, bottlenecks, communication gaps, and suboptimal adherence to evidence-based guidelines. These challenges result in delayed care, increased costs, clinician burnout, and preventable adverse patient outcomes.
 
 Recent advances in Large Language Models (LLMs) have demonstrated potential for addressing specific healthcare tasks including clinical documentation, patient communication, and diagnostic support. However, existing single-agent LLM applications fail to address the systemic, workflow-level challenges that characterize real-world clinical operations. Multi-agent systems, where specialized AI agents collaborate to accomplish complex tasks, offer a promising paradigm for healthcare process optimization. Yet, fundamental questions remain regarding their practical implementation, reliability, and integration with existing clinical workflows.
 
@@ -21,7 +21,7 @@ The deployment of multi-agent LLM systems in healthcare faces critical gaps at b
 These gaps lead to the following research questions:
 
 **Primary Research Question:**
-How can multi-agent LLM systems be practically implemented in existing healthcare workflows to improve process efficiency and clinical decision quality while maintaining minimal workflow disruption?
+How can multi-agent LLM systems be practically implemented in existing healthcare workflows to improve process efficiency and clinical decision quality while maintaining minimal current workflow disruption?
 
 **Secondary Research Questions:**
 1. How can process mining techniques inform the design and placement of agents within clinical workflows?
@@ -39,17 +39,20 @@ To develop and validate a comprehensive framework for implementing multi-agent L
 1. Develop a process mining-driven methodology for analyzing existing workflows and identifying optimal agent intervention points
 2. Design and implement a multi-agent architecture with specialized agents addressing identified workflow pain points (e.g., triage, diagnosis, coordination, documentation, patient communication)
 3. Implement and evaluate trust-enhancing mechanisms including hallucination prevention, audit trails, and explainability interfaces
-4. Demonstrate framework applicability through a concrete use case: automated guideline extraction and real-time adherence monitoring for sepsis management
-5. Conduct a pilot implementation in an Emergency Department setting with rigorous evaluation of efficiency, quality, and adoption outcomes
-6. Produce generalizable frameworks, toolkits, and best practices for multi-agent healthcare system implementation across diverse clinical contexts
+4. Demonstrate framework applicability through a concrete use case: automated guideline extraction and adherence with clinical processes.
+5. Produce generalizable frameworks, toolkits, and best practices for multi-agent healthcare system implementation across diverse clinical contexts
 
 ## 2. Literature Review and Theoretical Framework
 
 ### 2.1 Process Mining in Healthcare
 
-Process mining applies data science techniques to event logs from information systems to discover, monitor, and improve real processes. In healthcare, process mining has been successfully applied to analyze patient pathways, identify bottlenecks, and optimize resource allocation. Key studies demonstrate its utility in Emergency Departments, surgical pathways, and chronic disease management. However, existing research primarily focuses on descriptive analytics rather than prescriptive interventions, leaving a gap in how process insights translate to automated workflow optimization.
+Process mining applies data science techniques to event logs from information systems to discover, monitor, and improve real processes. In healthcare, process mining has been successfully applied to analyze patient pathways, identify bottlenecks, and optimize resource allocation. Key studies demonstrate its utility in Emergency Departments, surgical pathways, and chronic disease management.
 
-**Research Gap**: Limited integration of process mining insights with AI-driven interventions for real-time workflow optimization.
+Recent advances in **Object-Centric Process Mining (OCPM)** address critical limitations of traditional event-log approaches, which struggle to represent the complex many-to-many relationships inherent in healthcare (e.g., one patient interacting with multiple providers across multiple departments over time). OCPM enables modeling of multiple interacting object types (patients, tasks, departments, clinicians) and their relationships, providing a more natural representation of clinical workflows. This paradigm shift offers a theoretically grounded foundation for multi-agent system design, where each object class can naturally correspond to specialized agent types.
+
+However, existing research primarily focuses on descriptive analytics rather than prescriptive interventions, leaving a gap in how process insights—particularly OCPM insights—translate to automated workflow optimization and agent placement strategies.
+
+**Research Gap**: Limited integration of process mining insights (especially OCPM) with AI-driven interventions for real-time workflow optimization and systematic agent design.
 
 ### 2.2 Large Language Models in Healthcare
 
@@ -59,33 +62,52 @@ Recent LLMs (ChatGPT, Claude, Gemini) have shown remarkable capabilities in medi
 
 ### 2.3 Multi-Agent Systems
 
-Multi-agent systems (MAS) literature establishes principles for agent coordination, communication protocols, and collaborative problem-solving. Applications span autonomous vehicles, supply chain management, and scientific discovery. Healthcare applications remain limited, with most research focusing on simulation rather than real-world deployment. Key challenges include ensuring reliable agent coordination, managing computational complexity, and maintaining explainability in distributed decision-making.
+Multi-agent systems (MAS) literature establishes principles for agent coordination, communication protocols, and collaborative problem-solving. Foundational work by Wooldridge (2021) and Durfee (2019) provides theoretical frameworks for multiagent coordination, covering negotiation protocols, task allocation, and distributed constraint satisfaction. Applications span autonomous vehicles, supply chain management, and scientific discovery.
 
-**Research Gap**: Validated frameworks for deploying multi-agent LLM systems in safety-critical healthcare environments with appropriate trust and transparency mechanisms.
+Healthcare applications remain limited, with most research focusing on simulation rather than real-world deployment. Key challenges include ensuring reliable agent coordination, managing computational complexity, and maintaining explainability in distributed decision-making. Traditional MAS coordination protocols (e.g., contract net, blackboard systems) require adaptation for LLM-based agents operating in safety-critical clinical contexts where decisions must be auditable and interpretable by human stakeholders.
+
+**Research Gap**: Validated frameworks for deploying multi-agent LLM systems in safety-critical healthcare environments with appropriate trust and transparency mechanisms, particularly coordination protocols that balance efficiency with explainability requirements.
 
 ### 2.4 Clinical Practice Guidelines and Conformance Checking (Example Application Domain)
 
-Clinical practice guidelines synthesize evidence-based recommendations but face significant implementation challenges. Studies document adherence rates ranging from 30-70% depending on the guideline and clinical context. Existing clinical decision support systems (CDSS) require extensive manual encoding of guidelines and struggle with complex, evolving recommendations. Process mining conformance checking offers techniques to measure actual vs. intended process execution but has not been integrated with automated guideline operationalization. This domain provides a concrete use case for demonstrating multi-agent LLM capabilities in structured clinical decision support.
+Clinical practice guidelines synthesize evidence-based recommendations but face significant implementation challenges. Studies document adherence rates ranging from 30-70% depending on the guideline and clinical context. Existing clinical decision support systems (CDSS) require extensive manual encoding of guidelines and struggle with complex, evolving recommendations.
 
-**Research Gap**: Automated methods for extracting, structuring, and monitoring clinical protocols in real-time workflows—guideline adherence being one exemplar application.
+Process mining **conformance checking** offers techniques to measure actual vs. intended process execution. Rojas et al. (2016) demonstrate how conformance checking can identify deviations from clinical pathways in healthcare processes, providing quantitative measures of guideline adherence. However, existing conformance checking approaches require pre-defined process models and do not provide mechanisms for real-time intervention or automated guideline operationalization. This domain provides a concrete use case for demonstrating multi-agent LLM capabilities in structured clinical decision support.
+
+**Research Gap**: Automated methods for extracting, structuring, and monitoring clinical protocols in real-time workflows with closed-loop conformance checking—guideline adherence being one exemple application.
 
 ### 2.5 Trust and Adoption in Clinical AI
 
-Research on AI adoption in healthcare emphasizes the importance of clinician trust, which depends on reliability, transparency, and alignment with clinical workflows. Studies identify key adoption barriers including workflow disruption, perceived loss of autonomy, and concerns about liability.
+Research on AI adoption in healthcare emphasizes the importance of clinician trust, which depends on reliability, transparency, and alignment with clinical workflows. Kumpati et al. (2024) demonstrate how explainability can both increase and decrease clinician trust depending on implementation approach, highlighting the complexity of trust calibration in clinical AI systems. Studies identify key adoption barriers including workflow disruption, perceived loss of autonomy, and concerns about liability.
 
-**Research Gap**: Mechanisms for building trust in multi-agent healthcare systems through transparency and appropriate human oversight.
+Glikson & Woolley (2020) provide a foundational framework for **human trust in AI**, distinguishing between trust in AI capabilities (performance trust) and trust in AI intentions (purpose trust). In multi-agent systems, this framework extends to **distributed trust**—clinicians must trust not only individual agents but also inter-agent coordination mechanisms. This introduces unique challenges: when multiple agents contribute to a recommendation, how do clinicians attribute responsibility, assess reliability, and maintain appropriate skepticism?
+
+The Consolidated Framework for Implementation Research (CFIR) developed by Damschroder et al. (2009) offers a systematic approach to understanding adoption barriers across five domains: intervention characteristics, outer setting, inner setting, characteristics of individuals, and the implementation process. While widely used in healthcare implementation science, CFIR has not yet been systematically applied to multi-agent AI system deployment.
+
+**Research Gap**: Mechanisms for building distributed trust in multi-agent healthcare systems through transparency and appropriate human oversight, with systematic evaluation frameworks addressing organizational adoption factors.
 
 ### 2.6 Conceptual Framework
 
 This research integrates multiple theoretical perspectives:
 
-1. **Sociotechnical Systems Theory**: Views healthcare workflows as complex interactions between people, processes, and technology, requiring holistic consideration of technical and organizational factors
-2. **Distributed Cognition**: Frames multi-agent systems as distributed cognitive architectures where intelligence emerges from agent interactions
-3. **Evidence-Based Medicine**: Grounds interventions in clinical practice guidelines derived from systematic evidence synthesis
-4. **Human-AI Collaboration**: Emphasizes complementary strengths of human judgment and AI capabilities rather than automation
-5. **Process Mining Methodology**: Provides data-driven approach to workflow analysis and optimization
+1. **Object-Centric Process Mining (OCPM)**: Provides data-driven methodology for analyzing complex healthcare workflows with multiple interacting entities, serving as the foundation for systematic agent design and placement
+2. **Sociotechnical Systems Theory**: Views healthcare workflows as complex interactions between people, processes, and technology, requiring holistic consideration of technical and organizational factors
+3. **Distributed Cognition & Multi-Agent Coordination**: Frames multi-agent systems as distributed cognitive architectures where intelligence emerges from agent interactions, informed by established coordination protocols (Durfee, 2019; Wooldridge, 2021)
+4. **Distributed Trust Framework**: Extends Glikson & Woolley's (2020) trust model to multi-agent contexts, addressing both performance and purpose trust across distributed decision-making
+5. **Evidence-Based Medicine**: Grounds interventions in clinical practice guidelines derived from systematic evidence synthesis
+6. **Human-AI Collaboration**: Emphasizes complementary strengths of human judgment and AI capabilities rather than full automation
+7. **Implementation Science (CFIR)**: Provides systematic framework for evaluating adoption barriers and facilitators across organizational contexts
 
-**Theoretical Contribution**: This research develops an integrated framework connecting process mining, multi-agent systems, and evidence-based medicine to enable practical, trustworthy AI implementation in healthcare.
+**Novel Theoretical Contribution — Explainability-as-Coordination**: This research proposes a paradigm shift in how explainability functions in multi-agent systems. Rather than treating explainability solely as output for human users, we conceptualize it as an **inter-agent coordination protocol**. In this framework:
+
+- Agents communicate decision rationales to each other as part of coordination (not just to humans)
+- A specialized **Explainability Agent** acts as coordinator, synthesizing distributed reasoning into coherent, clinically interpretable narratives
+- Explanation generation becomes part of the coordination mechanism itself, with agents required to justify recommendations to peers before presenting to clinicians
+- This creates a **Collaborative Explainability Framework** where transparency emerges from agent interaction patterns rather than being retrofitted post-hoc
+
+This approach addresses the distributed trust challenge: when multiple agents contribute to recommendations, clinicians need not trace reasoning through each agent individually. Instead, the Explainability Agent provides unified accountability while maintaining traceable attribution to source agents.
+
+**Integrated Theoretical Contribution**: This research develops a comprehensive framework connecting OCPM-driven agent design, multi-agent coordination theory, distributed trust mechanisms, and implementation science to enable practical, trustworthy AI implementation in healthcare.
 
 ## 3. Expected Contributions
 
@@ -94,39 +116,34 @@ This research makes significant contributions across theoretical, methodological
 ### 3.1 Theoretical Contributions
 
 **To Multi-Agent Systems Research**:
-- Novel framework integrating distributed cognition with clinical workflow theory
-- Validated approaches to coordination, trust, and explainability in safety-critical multi-agent systems
+- **Explainability-as-Coordination Framework**: Novel paradigm treating explainability as an inter-agent coordination protocol rather than solely human-facing output, with empirical validation in safety-critical healthcare contexts
+- **OCPM-Driven Agent Design Methodology**: Systematic approach for mapping object-centric process models to multi-agent architectures, providing data-driven justification for agent placement and role definition
+- Validated coordination protocols balancing efficiency with explainability requirements in safety-critical environments
+- **Distributed Trust Mechanisms**: Extension of Glikson & Woolley's trust framework to multi-agent contexts, addressing responsibility attribution and trust calibration in distributed decision-making
 - Empirical evidence on emergent behaviors and human-AI collaboration patterns in complex healthcare environments
 
 **To Healthcare Informatics**:
-- Integration of process mining with AI-driven interventions, bridging descriptive and prescriptive analytics
-- Sociotechnical framework for clinical AI implementation considering organizational, technical, and human factors
+- **OCPM Integration with Prescriptive AI**: First framework connecting object-centric process mining with real-time multi-agent interventions, bridging descriptive and prescriptive analytics
+- **CFIR-Based Adoption Framework for Multi-Agent AI**: Systematic application of implementation science to multi-agent system deployment, providing structured evaluation across organizational, individual, and intervention dimensions
+- Sociotechnical framework for clinical AI implementation considering organizational, technical, and human factors informed by implementation science
 - Theory of clinical protocol operationalization using large language models (demonstrated through guideline adherence but applicable to broader clinical decision support)
-- Framework for using process discovery to identify optimal agent intervention points
-- Methodology for translating process mining insights into agent role definitions and placement strategies
-- Integration of conformance checking with real-time agent monitoring
+- **Process Mining → Agent Placement Pipeline**: Methodology for translating OCPM insights into agent role definitions, placement strategies, and coordination protocols
+- Integration of conformance checking with real-time agent monitoring, creating closed-loop quality assurance
 
 ### 3.2 Practical Contributions and Impact
 
 **Immediate Healthcare Impact**:
-- Demonstrated improvements in ED efficiency (target: 20-30% cycle time reduction)
-- Enhanced protocol adherence demonstrated through sepsis use case (target: 15-25% increase) with measurable patient outcome benefits
+- Enhanced treatment guideline adherence clinical processes with measurable patient outcome benefits
 - Reduced clinician documentation burden while maintaining quality
-- **FHIR-compliant multi-agent framework** enabling rapid deployment across diverse EHR platforms (Epic, Cerner, Meditech, etc.) and healthcare settings without vendor-specific customization
+- **FHIR-compliant multi-agent framework** enabling rapid deployment across diverse EHR platforms and healthcare settings without vendor-specific customization
 - LLM-based extraction pipeline for converting unstructured clinical protocols into structured, computable representations
 - Automated protocol-to-workflow mapping using FHIR PlanDefinition and Clinical Quality Language (CQL)
-- FHIR-native guideline encoding enabling cross-platform deployment (demonstrated with sepsis guidelines, generalizable to other protocols)
+- FHIR-native guideline encoding enabling cross-platform deployment 
 - Real-time conformance monitoring framework with severity-tiered alerting via CDS Hooks
 - Comprehensive suite of mechanisms for hallucination detection, consistency checking, and audit trails
 - Explainability interfaces for clinical comprehension with distributed responsibility attribution
 - Mixed-methods evaluation toolkit spanning operational, clinical, trust, and adoption dimensions
 
-**Implementation Resources**:
-- Open-source implementation playbook and toolkit with FHIR integration guides
-- Reference FHIR resource profiles and implementation guides for multi-agent systems
-- Training materials for clinical and technical staff
-- Best practices guide for multi-agent healthcare AI deployment
-- FHIR server configurations and CDS Hooks deployment templates
 
 **Generalizable Insights**:
 - Evidence-based understanding of clinician adoption factors
@@ -166,10 +183,16 @@ This research makes significant contributions across theoretical, methodological
 
 **Organizational and Adoption Risks**:
 - *Risk*: Clinician resistance undermining adoption
-- *Mitigation*: Early stakeholder engagement; participatory design involving end users; transparent communication; demonstrate early wins; ongoing support
+- *Mitigation*: Apply **CFIR-guided implementation strategy** addressing barriers across all five domains:
+  - **Intervention Characteristics**: Emphasize adaptability, relative advantage, and trialability through phased deployment
+  - **Outer Setting**: Align with regulatory requirements and external incentives (e.g., quality reporting, reimbursement)
+  - **Inner Setting**: Assess organizational culture, readiness for change, and implementation climate; engage clinical champions
+  - **Individual Characteristics**: Address knowledge, beliefs, and self-efficacy through targeted training and participatory design
+  - **Implementation Process**: Plan systematic engagement, execution, and evaluation with continuous feedback loops
+- Early stakeholder engagement using CFIR constructs to identify site-specific barriers; transparent communication; demonstrate early wins through measurable outcomes; ongoing support infrastructure
 
 - *Risk*: Workflow disruption during implementation
-- *Mitigation*: Staged rollout; shadow mode testing; extensive training; parallel operations initially; rapid issue resolution
+- *Mitigation*: Staged rollout informed by CFIR implementation process domain; shadow mode testing with process mining monitoring; extensive role-specific training addressing individual characteristics domain; parallel operations initially; rapid issue resolution with continuous CFIR-based evaluation
 
 **Clinical Safety Risks**:
 - *Risk*: Agent errors leading to adverse patient outcomes
@@ -214,7 +237,7 @@ This research makes significant contributions across theoretical, methodological
 
 12. Nature Healthcare (2025). "Trust in AI-assisted health systems and AI's trust in humans." *npj Health Systems*, 3, Article 16. https://doi.org/10.1038/s44401-025-00016-5
 
-### Sepsis Guidelines and Implementation
+### Guidelines and Implementation
 
 13. Holder, A. L., et al. (2024). "Sepsis Alert Systems, Mortality, and Adherence in Emergency Departments: A Systematic Review and Meta-Analysis." *Journal of Emergency Medicine*, 67(1), e78-e91. https://pmc.ncbi.nlm.nih.gov/articles/PMC11265133/
 
@@ -226,15 +249,33 @@ This research makes significant contributions across theoretical, methodological
 
 16. Lehne, M., et al. (2019). "Why digital medicine depends on interoperability." *npj Digital Medicine*, 2, 79. https://doi.org/10.1038/s41746-019-0158-1
 
+### Object-Centric Process Mining
+
+17. van der Aalst, W. M. P. (2023). "Object-Centric Process Mining: Unraveling the Fabric of Real Processes." *Mathematics*, 11(12), 2691. https://doi.org/10.3390/math11122691
+
+### Multi-Agent Coordination Theory
+
+18. Durfee, E. H. (2019). "Multiagent Coordination: Theory and Practice." *ACM Computing Surveys*, 52(5), Article 101. https://doi.org/10.1145/3331069
+
+19. Wooldridge, M. (2021). *An Introduction to MultiAgent Systems* (3rd ed.). Wiley.
+
+### Trust in AI and Implementation Science
+
+20. Glikson, E., & Woolley, A. W. (2020). "Human Trust in Artificial Intelligence: Review of Empirical Research." *Academy of Management Annals*, 14(2), 627-660. https://doi.org/10.5465/annals.2018.0057
+
+21. Damschroder, L. J., et al. (2009). "Fostering implementation of health services research findings into practice: a consolidated framework for advancing implementation science." *Implementation Science*, 4, 50. https://doi.org/10.1186/1748-5908-4-50
+
+### Conformance Checking in Healthcare
+
+22. Rojas, E., et al. (2016). "Process mining in healthcare: A literature review." *Journal of Biomedical Informatics*, 61, 224-236. https://doi.org/10.1016/j.jbi.2016.04.007
+
 ### Additional Foundational Literature
 
-17. van der Aalst, W. M. P. (2016). *Process Mining: Data Science in Action* (2nd ed.). Springer-Verlag Berlin Heidelberg.
+23. van der Aalst, W. M. P. (2016). *Process Mining: Data Science in Action* (2nd ed.). Springer-Verlag Berlin Heidelberg.
 
-18. Wooldridge, M. (2021). *An Introduction to MultiAgent Systems* (3rd ed.). Wiley.
+24. Sutton, R. T., et al. (2020). "An overview of clinical decision support systems: benefits, risks, and strategies for success." *npj Digital Medicine*, 3, 17. https://doi.org/10.1038/s41746-020-0221-y
 
-19. Sutton, R. T., et al. (2020). "An overview of clinical decision support systems: benefits, risks, and strategies for success." *npj Digital Medicine*, 3, 17. https://doi.org/10.1038/s41746-020-0221-y
-
-20. Greenhalgh, T., et al. (2017). "Beyond Adoption: A New Framework for Theorizing and Evaluating Nonadoption, Abandonment, and Challenges to the Scale-Up, Spread, and Sustainability of Health and Care Technologies." *Journal of Medical Internet Research*, 19(11), e367. https://doi.org/10.2196/jmir.8775
+25. Greenhalgh, T., et al. (2017). "Beyond Adoption: A New Framework for Theorizing and Evaluating Nonadoption, Abandonment, and Challenges to the Scale-Up, Spread, and Sustainability of Health and Care Technologies." *Journal of Medical Internet Research*, 19(11), e367. https://doi.org/10.2196/jmir.8775
 
 ---
 
