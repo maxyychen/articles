@@ -15,8 +15,8 @@ The deployment of multi-agent LLM systems in healthcare faces critical gaps at b
 1. **Implementation Gap**: Lack of validated methodologies for integrating multi-agent systems into established clinical workflows without causing disruption
 2. **Optimization Gap**: Absence of systematic approaches to identify where and how to deploy agents for maximum impact
 3. **Quality Gap**: Limited understanding of how multi-agent systems can enforce evidence-based guideline adherence while respecting clinical judgment
-4. **Trust Gap**: Unresolved challenges in ensuring reliability, transparency, and explainability in high-stakes healthcare environments
-5. **Coordination Gap**: Insufficient frameworks for efficient agent collaboration with minimal communication overhead
+4. **Trust Gap**: Unresolved challenges in ensuring reliability, transparency, and explainability in high-stakes healthcare environments between human healthcare professionals/patients and AI agents.
+
 
 These gaps lead to the following research questions:
 
@@ -37,7 +37,7 @@ To develop and validate a comprehensive framework for implementing multi-agent L
 
 **Specific Objectives:**
 1. Develop a process mining-driven methodology for analyzing existing workflows and identifying optimal agent intervention points
-2. Design and implement a multi-agent architecture with specialized agents addressing identified workflow pain points (e.g., triage, diagnosis, coordination, documentation, patient communication)
+2. Design and implement a multi-agent architecture with specialized agents addressing identified workflow pain points (e.g., diagnosis, coordination, documentation, patient communication)
 3. Implement and evaluate trust-enhancing mechanisms including hallucination prevention, audit trails, and explainability interfaces
 4. Demonstrate framework applicability through a concrete use case: automated guideline extraction and adherence with clinical processes.
 5. Produce generalizable frameworks, toolkits, and best practices for multi-agent healthcare system implementation across diverse clinical contexts
@@ -46,7 +46,7 @@ To develop and validate a comprehensive framework for implementing multi-agent L
 
 ### 2.1 Process Mining in Healthcare
 
-Process mining applies data science techniques to event logs from information systems to discover, monitor, and improve real processes. In healthcare, process mining has been successfully applied to analyze patient pathways, identify bottlenecks, and optimize resource allocation. Key studies demonstrate its utility in Emergency Departments, surgical pathways, and chronic disease management.
+Process mining applies data science techniques to event logs from information systems to discover, monitor, and improve real processes. In healthcare, process mining has been successfully applied to analyze patient pathways, identify bottlenecks, and optimize resource allocation.
 
 Recent advances in **Object-Centric Process Mining (OCPM)** address critical limitations of traditional event-log approaches, which struggle to represent the complex many-to-many relationships inherent in healthcare (e.g., one patient interacting with multiple providers across multiple departments over time). OCPM enables modeling of multiple interacting object types (patients, tasks, departments, clinicians) and their relationships, providing a more natural representation of clinical workflows. This paradigm shift offers a theoretically grounded foundation for multi-agent system design, where each object class can naturally correspond to specialized agent types.
 
@@ -56,9 +56,11 @@ However, existing research primarily focuses on descriptive analytics rather tha
 
 ### 2.2 Large Language Models in Healthcare
 
-Recent LLMs (ChatGPT, Claude, Gemini) have shown remarkable capabilities in medical question answering, clinical note generation, and diagnostic reasoning. However, most applications remain single-task focused and lack integration with clinical workflows. Critical concerns include hallucinations, lack of explainability, and insufficient validation for high-stakes clinical decisions.
+Recent LLMs (ChatGPT, Claude, Gemini) have demonstrated remarkable capabilities in medical question answering, clinical note generation, and diagnostic reasoning. However, most applications remain single-task focused and lack integration with clinical workflows. Critical concerns include hallucinations, lack of explainability, and insufficient validation for high-stakes clinical decisions.
 
-**Research Gap**: Systematic approaches to deploying LLMs within existing clinical workflows with appropriate safety guardrails and human oversight.
+To address data privacy concerns, hospitals can now deploy affordable LLM inference systems through hybrid architectures combining on-premises servers and edge-AI devices, making multi-agent applications feasible within secure clinical environments. On-premises deployment maintains centralized control over sensitive data within hospital infrastructure, while edge-AI enables real-time processing at the point of care on medical devices and bedside systems. This hybrid approach enables sophisticated AI collaboration while maintaining strict data governance and compliance with healthcare regulations.
+
+**Research Gap**: Systematic approaches to deploying LLMs within existing clinical workflows with appropriate safety guardrails and human oversight remain underdeveloped.
 
 ### 2.3 Multi-Agent Systems
 
@@ -98,7 +100,7 @@ This research integrates multiple theoretical perspectives:
 6. **Human-AI Collaboration**: Emphasizes complementary strengths of human judgment and AI capabilities rather than full automation
 7. **Implementation Science (CFIR)**: Provides systematic framework for evaluating adoption barriers and facilitators across organizational contexts
 
-**Novel Theoretical Contribution — Explainability-as-Coordination**: This research proposes a paradigm shift in how explainability functions in multi-agent systems. Rather than treating explainability solely as output for human users, we conceptualize it as an **inter-agent coordination protocol**. In this framework:
+This research proposes a paradigm shift in how explainability functions in multi-agent systems. Rather than treating explainability solely as output for human users, we conceptualize it as an **inter-agent coordination protocol**. In this framework:
 
 - Agents communicate decision rationales to each other as part of coordination (not just to humans)
 - A specialized **Explainability Agent** acts as coordinator, synthesizing distributed reasoning into coherent, clinically interpretable narratives
@@ -137,9 +139,7 @@ This research makes significant contributions across theoretical, methodological
 - Reduced clinician documentation burden while maintaining quality
 - **FHIR-compliant multi-agent framework** enabling rapid deployment across diverse EHR platforms and healthcare settings without vendor-specific customization
 - LLM-based extraction pipeline for converting unstructured clinical protocols into structured, computable representations
-- Automated protocol-to-workflow mapping using FHIR PlanDefinition and Clinical Quality Language (CQL)
 - FHIR-native guideline encoding enabling cross-platform deployment 
-- Real-time conformance monitoring framework with severity-tiered alerting via CDS Hooks
 - Comprehensive suite of mechanisms for hallucination detection, consistency checking, and audit trails
 - Explainability interfaces for clinical comprehension with distributed responsibility attribution
 - Mixed-methods evaluation toolkit spanning operational, clinical, trust, and adoption dimensions
