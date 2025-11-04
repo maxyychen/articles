@@ -5,6 +5,8 @@ When I first encountered ChatGPT, I was amazed by its ability to communicate lik
 
 In early 2025, Claude Code appeared, which changed my workflow for building software. Since then, I focus more on design and testing rather than writing code.[Generative AI in Software Engineering: The Dawn of a New Era](generative_ai_in_software_engineering.md).
 
+This same transformation is now revolutionizing data analysis. Instead of writing analysis scripts manually, we can provide specifications and let LLM agents generate the implementation—from data processing to algorithm implementation to comprehensive reports. This specification-driven approach makes data analysis faster, more reproducible, and accessible to domain experts: [A New Era of Data Analysis: From Knowledge to Insights with LLM Agents](data_analysis_new_era.md).
+
 I've started thinking about how to leverage LLM agents and make it work in a reliable and trustworthy way. Today we can easily implement LLM agents who can use external tools to perform complex tasks, such as searches, database operations, external API calls, and more ([Agent, Tools, and MCP: Complete Data Flow Guide](agent_tools_dataflow.md)). We can even integrate agents to undertake complex tasks. I've organized a comprehensive comparison covering both production SDKs from tech giants (OpenAI, Anthropic, Google) and open-source frameworks (AutoGen, CrewAI, LangGraph, etc.): [Multi-Agent AI Frameworks & SDKs: Comprehensive Comparison (2025)](multi_agent_frameworks_comparison.md).
 
 
