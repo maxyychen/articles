@@ -1,16 +1,26 @@
+## My Journey with Large Language Models
 
-## The Journey of My LLM Experience
+This collection documents my exploration of LLM-powered tools and multi-agent systems, from early experiments with ChatGPT to building production-ready AI solutions in healthcare.
 
-When I first encountered ChatGPT, I was amazed by its ability to communicate like a human. However, I quickly learned that not everything it says is correct—you need to be careful when using LLMs. I share my experience in this note: [How to Use Generative AI to reduce hallucinations: A Practical Guide](effective_ai_prompting_guide.md).
+### From Prompting to Production
 
-In early 2025, Claude Code appeared, which changed my workflow for building software. Since then, I focus more on design and testing rather than writing code.[Generative AI in Software Engineering: The Dawn of a New Era](generative_ai_in_software_engineering.md).
+When I first encountered ChatGPT, I was amazed by its ability to communicate like a human. However, I quickly learned that not everything it says is correct—careful validation is essential when working with LLMs. I share my lessons learned in: [How to Use Generative AI to reduce hallucinations: A Practical Guide](effective_ai_prompting_guide.md).
 
-This same transformation is now revolutionizing data analysis. Instead of writing analysis scripts manually, we can provide specifications and let LLM agents generate the implementation—from data processing to algorithm implementation to comprehensive reports. This specification-driven approach makes data analysis faster, more reproducible, and accessible to domain experts: [A New Era of Data Analysis: From Knowledge to Insights with LLM Agents](data_analysis_new_era.md).
+In early 2025, Claude Code emerged and fundamentally transformed my software development workflow. Instead of writing code line by line, I now focus primarily on system design and testing while AI handles implementation. I explore this shift in: [Generative AI in Software Engineering: The Dawn of a New Era](generative_ai_in_software_engineering.md).
 
-I've started thinking about how to leverage LLM agents and make it work in a reliable and trustworthy way. Today we can easily implement LLM agents who can use external tools to perform complex tasks, such as searches, database operations, external API calls, and more ([Agent, Tools, and MCP: Complete Data Flow Guide](agent_tools_dataflow.md)). We can even integrate agents to undertake complex tasks. I've organized a comprehensive comparison covering both production SDKs from tech giants (OpenAI, Anthropic, Google) and open-source frameworks (AutoGen, CrewAI, LangGraph, etc.): [Multi-Agent AI Frameworks & SDKs: Comprehensive Comparison (2025)](multi_agent_frameworks_comparison.md).
+### Beyond Software Engineering
 
+This same transformation is now revolutionizing data analysis. Instead of writing analysis scripts manually, we can provide specifications and let LLM agents generate the complete implementation—from data processing to algorithm implementation to comprehensive reports. This specification-driven approach makes data analysis faster, more reproducible, and accessible to domain experts: [A New Era of Data Analysis: From Knowledge to Insights with LLM Agents](data_analysis_new_era.md).
 
-In the meantime, multi-agent systems have proven effective in many fields, such as building software with minimal human intervention (Devin, ChatDev), self-driving vehicles, scientific discovery, and healthcare.([Multi-Agent LLM Healthcare Review Article](Multi-Agent_LLM_Healthcare_Review_Article.md)).
+### Building Reliable LLM Agent Systems
+
+As I explored practical applications, I became focused on how to leverage LLM agents in reliable and trustworthy ways. Today, we can implement LLM agents that use external tools to perform complex tasks—including searches, database operations, and API calls. Learn more about the technical architecture: [Agent, Tools, and MCP: Complete Data Flow Guide](agent_tools_dataflow.md).
+
+For more complex workflows, we can integrate multiple agents to collaborate on sophisticated tasks. To help navigate the growing ecosystem, I've organized a comprehensive comparison covering both production SDKs from tech giants (OpenAI, Anthropic, Google) and open-source frameworks (AutoGen, CrewAI, LangGraph, etc.): [Multi-Agent AI Frameworks & SDKs: Comprehensive Comparison (2025)](multi_agent_frameworks_comparison.md).
+
+### Real-World Applications
+
+Multi-agent systems have already proven effective across diverse domains: building software with minimal human intervention (Devin, ChatDev), autonomous vehicles, scientific discovery, and healthcare diagnostics. For a deeper dive into healthcare applications, see: [Multi-Agent LLM Healthcare Review Article](Multi-Agent_LLM_Healthcare_Review_Article.md).
 
 Working at the intersection of AI and healthcare, I'm committed to developing intelligent tools that empower clinicians to deliver better patient care. This is where my journey continues.
 
