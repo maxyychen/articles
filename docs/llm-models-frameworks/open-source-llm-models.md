@@ -32,7 +32,7 @@ Licensing is crucial for determining how you can actually use these models. The 
 
 **MIT License**: Even more permissive than Apache 2.0, with simpler terms. DeepSeek-R1, released in January 2025, uses the MIT License.
 
-**Custom Licenses**: Some models use custom licenses with specific restrictions. Meta's Llama models, while often described as "open source," use a custom license that restricts commercial use for services with over 700 million monthly active users and includes other clauses that differentiate it from traditional open source licenses.
+**Custom Licenses**: Some models use custom licenses with specific restrictions. Meta's Llama models, while often described as "open source," use a custom license that restricts commercial use for services with over 700 million monthly active users and includes other clauses that differentiate it from traditional open source licenses. Similarly, Google's Gemma models use the "Gemma Terms of Use" custom license that permits commercial use but includes prohibited use policies restricting content generation in sensitive areas (financial, legal, medical advice) and requires notification to downstream users of these restrictions.
 
 Understanding these distinctions is essential for compliance and strategic planning. While the community often uses "open source" broadly, the specific license terms determine whether you can use a model for commercial purposes, modify it, or integrate it into your products.
 
@@ -132,7 +132,107 @@ While newer models have since surpassed Falcon in benchmarks, these models demon
 
 Both models are released under the Apache 2.0 license and come natively quantized in MXFP4 format. They support configurable reasoning effort (low, medium, high), full chain-of-thought, structured outputs, and are optimized for agentic workflows with strong tool use capabilities including web search and Python code execution. Available on HuggingFace, Ollama, and multiple inference platforms.
 
-**Google Gemma**: Google's contribution to open-weight models, designed to be lightweight and efficient for on-device deployment while maintaining strong performance.
+**Google Gemma Family**: Google's contribution to open-weight models, designed to be lightweight and efficient while delivering competitive performance.
+
+**Evolution and Model Variants**
+
+Google has released three generations of Gemma models:
+
+- **Gemma 1** (February 2024): Initial release with 2B and 7B parameter models, both in base and instruction-tuned variants
+- **Gemma 2** (June-July 2024): Major architecture improvements with 2B, 9B, and 27B parameter models
+- **Gemma 3** (March 2025): Latest generation with 1B, 4B, 12B, and 27B parameter models, featuring expanded capabilities
+
+**Technical Architecture**
+
+Gemma models use a decoder-only transformer architecture with several innovations:
+
+- **Gemma 2**: Incorporates Grouped-Query Attention (GQA), sliding window attention (applied to every other layer with 4096-token local windows), and GeGLU activation functions. Trained on 8-13 trillion tokens of web data, code, and mathematics. Context window: 8K tokens.
+- **Gemma 3**: Uses MatFormer (Matryoshka Transformer) architecture that allows selective parameter activation per request. Expanded context window to 128K tokens—16x larger than previous versions and 50% more than Gemma 2's 80K tokens.
+
+**Performance Highlights**
+
+Gemma 2 27B delivers performance comparable to Llama 3 70B at less than half the size, achieving the highest ranking among open models on Chatbot Arena. The 9B version strongly outperforms other models in its parameter range. On benchmarks like MMLU, GSM8K, and Winogrande, Gemma 2 27B outperformed Qwen1.5 32B and approached Llama 3 70B performance.
+
+Gemma 3 models claim to outperform larger open-source models including DeepSeek-V3 and Llama 3 405B in certain benchmarks, though independent verification is ongoing.
+
+**Specialized Variants**
+
+- **CodeGemma** (7B pretrained, 7B instruction-tuned, 2B lightweight): Trained on 500B-1T code and math tokens, supporting Python, JavaScript, Java, Kotlin, C++, and other languages for code completion, generation, and code-chat capabilities.
+- **PaliGemma and PaliGemma 2**: Vision-language models built on SigLIP vision model and Gemma language model, designed for image/video captioning, visual question answering, text recognition in images, object detection, and segmentation.
+- **ShieldGemma** (July 2024): Instruction-tuned model for safety evaluations of text and images.
+
+**Multimodal and Agentic Capabilities**
+
+Gemma 3 represents Google's first multimodal Gemma release, supporting:
+- Analysis of text, images, and short video content
+- Multilingual support for 140+ languages (up from previous versions)
+- Function calling and structured outputs for agentic workflows
+- Native optimization for automated task execution
+
+**Deployment Flexibility**
+
+The 27B model can run at full precision on a single Google Cloud TPU host, NVIDIA A100 80GB, or H100 GPU. Smaller variants (2B-7B) can run on consumer-grade hardware, including laptops and desktop computers, making Gemma accessible for edge deployment and on-device applications.
+
+**Licensing**
+
+**Important**: Gemma uses Google's custom "Gemma Terms of Use" license, not Apache 2.0 for model weights (though implementation code may be Apache 2.0). The license permits commercial use but includes:
+- Google's Prohibited Use Policy restricting generation in sensitive areas (financial, legal, medical advice)
+- Requirements to notify downstream users of use restrictions
+- Terms that may not conform to traditional open-source definitions (OSI/FSF standards)
+
+Organizations should carefully review the license terms before commercial deployment, as the custom restrictions may impact certain business use cases.
+
+**01.AI Yi Series (34B)**: Developed by Chinese AI unicorn 01.AI (founded by former Baidu executive Kai-Fu Lee), the Yi series represents high-performance bilingual English/Chinese models.
+
+- **Yi-34B**: Contains 34 billion parameters trained on a massive 3.1 trillion tokens of multilingual data (4K sequence length, expandable to 32K during inference). Features a vocabulary size of 64,000 for optimal balance between efficiency and comprehension.
+- **Performance**: Yi-34B-Chat ranked second only to GPT-4 Turbo on the AlpacaEval Leaderboard, surpassing GPT-4, Mixtral, and Claude. The Yi-34B base model ranked highest among all open-source models including Falcon-180B and Llama-70B in both English and Chinese benchmarks.
+- **Variants**: Includes Yi-6B and Yi-34B models, with 200K context length versions (Yi-6B-200K, Yi-34B-200K), and vision-language models (Yi-VL).
+- **License**: Apache 2.0 for model weights; free for commercial use.
+
+**Cohere Command R Family**: Enterprise-focused models from Cohere optimized for RAG and tool use.
+
+- **Command R (35B)**: A 35 billion parameter multilingual model designed specifically for long-context tasks like retrieval-augmented generation (RAG) and calling external APIs and tools. Optimized for enterprise workloads with strong instruction-following capabilities.
+- **Command R+ (104B)**: A 104 billion parameter state-of-the-art model with highly advanced capabilities for enterprise-grade workloads. Supports 128K context length and excels at sophisticated automated tasks.
+- **Multilingual Support**: Both models are optimized for 10 languages: English, French, Spanish, Italian, German, Brazilian Portuguese, Japanese, Korean, Simplified Chinese, and Arabic.
+- **License**: CC-BY-NC (Creative Commons Attribution-NonCommercial) with acceptable use policies.
+
+**Databricks DBRX (132B MoE)**: A groundbreaking open-source model from Databricks released in March 2024.
+
+- **Architecture**: Transformer-based decoder-only model using fine-grained Mixture-of-Experts (MoE) with 132B total parameters, 36B active parameters per input. Uses 16 experts with top-4 routing (4 experts active during training/inference)—providing 65x more expert combinations than other open MoE models.
+- **Training**: Pre-trained on 12 trillion tokens with 32K context window using GPT-4 tokenizer. Built from scratch in less than three months.
+- **Performance**: Sets new state-of-the-art for open LLMs, surpassing GPT-3.5 and competitive with Gemini 1.0 Pro. Especially strong for code generation, surpassing CodeLLaMA-70B. Offers 2x faster inference than LLaMA2-70B while being 40% smaller than Grok-1.
+- **License**: Apache 2.0, available for commercial and research use.
+
+**Snowflake Arctic (480B MoE)**: Enterprise-grade model from Snowflake released in April 2024, designed for SQL and code generation.
+
+- **Architecture**: Dense Mixture of Experts (MoE) Hybrid transformer with 480B total parameters distributed over 128 fine-grained experts. Uses top-2 gating to activate 17B parameters per token. Combines a 10B dense transformer with 128 experts × 3.66B parameter MoE MLP component.
+- **Innovation**: Uses 128 fine-grained experts (far more than typical MoE models with 8-16 experts), enabling superior performance in SQL, coding, and instruction-following tasks.
+- **Training**: Built from scratch in less than three months with focus on efficiency and enterprise applications.
+- **License**: Apache 2.0, freely available for personal, research, and commercial use.
+
+**BigScience BLOOM (176B)**: The landmark multilingual open-access model from a global research collaboration.
+
+- **Development**: Created by hundreds of researchers in the largest AI research collaboration ever, trained for nearly four months on 416 A100 80GB GPUs.
+- **Multilingual**: Generates text in 46 natural languages and 13 programming languages, trained on the ROOTS corpus containing 350B tokens (1.6TB dataset).
+- **Architecture**: Decoder-only Transformer with 176 billion parameters, designed with complete transparency in training process.
+- **License**: Responsible AI License with open access for public research and use.
+- **Legacy**: Released in July 2022 as the first truly multilingual LLM trained in complete transparency, establishing new standards for open collaboration.
+
+**InternLM Series (20B)**: Developed by Shanghai AI Laboratory with SenseTime, CUHK, and Fudan University.
+
+- **InternLM-20B**: 20 billion parameter model with deep architecture (60 layers), pre-trained on over 2.3 trillion tokens of high-quality English, Chinese, and code data.
+- **Performance**: Comprehensively outperforms open-source 13B models and approaches or surpasses Llama-65B performance on inference benchmarks.
+- **Training**: Undergoes SFT and RLHF training for the Chat version, enabling safer and more aligned responses.
+- **Model Sizes**: Available in 1.8B, 7B, and 20B variants, with InternLM2 and InternLM2.5 subsequent releases showing continued improvement.
+- **License**: Apache 2.0 for code; model weights fully open for academic research and free commercial use.
+
+**Additional 20B+ Models**:
+
+- **Falcon-40B**: 40 billion parameters trained on 1 trillion tokens using 384 GPUs, developed by UAE's Technology Innovation Institute. Uses autoregressive decoder architecture and ranked #1 on Hugging Face's open-source leaderboard upon release (May 2023). License: Apache 2.0.
+
+- **MPT-30B**: 30 billion parameter decoder-based transformer from MosaicML (now part of Databricks), trained on 1T tokens. Features 8K token context window with ALiBi extrapolation and FlashAttention for efficient training/inference. Released June 2023 under Apache 2.0 license.
+
+- **GPT-NeoX-20B**: 20 billion parameter model from EleutherAI, one of the earliest large truly open-source models. Trained on the Pile dataset (825GB of diverse text from 22 sources). Released February 2022 under Apache 2.0 with complete transparency in training data and procedures, serving as a valuable research tool.
 
 **Microsoft Phi Series**: Focuses on "small language models" that achieve impressive performance through high-quality training data, proving that smaller models can punch above their weight.
 
@@ -925,6 +1025,88 @@ The revolution isn't coming—it's already here. The question is no longer wheth
   - Qwen 2.5 and Qwen 3 gaining market share in AI research
   - Released under Apache 2.0 license
 
+#### Google Gemma Series
+- **"Gemma 2: Improving Open Language Models at a Practical Size"**
+  - Technical report for Gemma 2 family (2B, 9B, 27B)
+  - Details Grouped-Query Attention and sliding window attention
+  - Trained on 8-13 trillion tokens
+  - Available at: https://storage.googleapis.com/deepmind-media/gemma/gemma-2-report.pdf
+  - Official page: https://ai.google.dev/gemma
+
+- **Gemma Model Family**
+  - Gemma 3 (March 2025): 1B, 4B, 12B, 27B with 128K context window
+  - CodeGemma: Specialized for code completion and generation
+  - PaliGemma: Vision-language models for multimodal tasks
+  - Released under Google's custom "Gemma Terms of Use" license
+  - Blog announcement: https://blog.google/technology/developers/gemma-open-models/
+  - HuggingFace Hub: https://huggingface.co/blog/gemma
+
+#### 01.AI Yi Series
+- **"Yi: Open Foundation Models by 01.AI"** (arXiv:2403.04652)
+  - 34B parameter bilingual (English/Chinese) model
+  - Trained on 3.1 trillion tokens
+  - Available at: https://arxiv.org/html/2403.04652v1
+  - GitHub: https://github.com/01-ai/Yi
+  - HuggingFace: https://huggingface.co/01-ai
+
+#### Cohere Command R
+- **Command R and Command R+ Models**
+  - Command R: 35B parameter multilingual model for RAG
+  - Command R+: 104B parameter enterprise model with 128K context
+  - Model documentation: https://docs.cohere.com/docs/command-r
+  - HuggingFace: https://huggingface.co/CohereLabs
+  - Released under CC-BY-NC License
+
+#### Databricks DBRX
+- **"Introducing DBRX: A New State-of-the-Art Open LLM"**
+  - 132B total parameters, 36B active (MoE architecture)
+  - Pre-trained on 12T tokens
+  - Blog post: https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm
+  - GitHub: https://github.com/databricks/dbrx
+  - HuggingFace: https://huggingface.co/databricks/dbrx-instruct
+  - Released under Apache 2.0 license
+
+#### Snowflake Arctic
+- **Snowflake Arctic: Open-Source Enterprise LLM**
+  - 480B total parameters, 17B active (Dense MoE)
+  - 128 fine-grained experts with top-2 gating
+  - GitHub: https://github.com/Snowflake-Labs/snowflake-arctic
+  - HuggingFace: https://huggingface.co/Snowflake/snowflake-arctic-instruct
+  - Released April 2024 under Apache 2.0 license
+
+#### BigScience BLOOM
+- **"BLOOM: A 176B-Parameter Open-Access Multilingual Language Model"** (arXiv:2211.05100)
+  - 176B parameter multilingual model (46 languages, 13 programming languages)
+  - Trained on ROOTS corpus (1.6TB, 350B tokens)
+  - Available at: https://arxiv.org/abs/2211.05100
+  - Official page: https://bigscience.huggingface.co/blog/bloom
+  - HuggingFace: https://huggingface.co/bigscience/bloom
+  - Released under Responsible AI License
+
+#### InternLM Series
+- **"InternLM2 Technical Report"** (arXiv:2403.17297)
+  - InternLM-20B with 60-layer deep architecture
+  - Trained on 2.3T+ tokens (English, Chinese, code)
+  - Available at: https://arxiv.org/html/2403.17297v1
+  - GitHub: https://github.com/InternLM/InternLM
+  - HuggingFace: https://huggingface.co/internlm
+  - Released under Apache 2.0 license
+
+#### Other 20B+ Models
+- **Falcon-40B**: Technology Innovation Institute (UAE), May 2023
+  - HuggingFace: https://huggingface.co/tiiuae/falcon-40b
+  - Official AWS blog: https://aws.amazon.com/blogs/machine-learning/technology-innovation-institute-trains-the-state-of-the-art-falcon-llm-40b-foundation-model-on-amazon-sagemaker/
+
+- **MPT-30B**: MosaicML (now Databricks), June 2023
+  - HuggingFace: https://huggingface.co/mosaicml/mpt-30b
+  - Blog announcement: https://www.databricks.com/blog/mpt-30b
+
+- **GPT-NeoX-20B**: EleutherAI, February 2022
+  - Paper: "GPT-NeoX-20B: An Open-Source Autoregressive Language Model" (arXiv:2204.06745)
+  - Available at: https://arxiv.org/abs/2204.06745
+  - GitHub: https://github.com/EleutherAI/gpt-neox
+  - HuggingFace: https://huggingface.co/EleutherAI/gpt-neox-20b
+
 ### 14.3 Fine-tuning and Optimization Research
 
 #### Parameter-Efficient Fine-Tuning
@@ -1029,6 +1211,14 @@ The revolution isn't coming—it's already here. The question is no longer wheth
 - Meta Llama: https://llama.meta.com/
 - Mistral AI: https://mistral.ai/
 - DeepSeek: https://github.com/deepseek-ai
+- Google Gemma: https://ai.google.dev/gemma
+- 01.AI Yi Models: https://github.com/01-ai/Yi
+- Cohere Command R: https://huggingface.co/CohereLabs
+- Databricks DBRX: https://github.com/databricks/dbrx
+- Snowflake Arctic: https://github.com/Snowflake-Labs/snowflake-arctic
+- BigScience BLOOM: https://huggingface.co/bigscience/bloom
+- InternLM: https://github.com/InternLM/InternLM
+- EleutherAI: https://github.com/EleutherAI
 
 ### Documentation and Tutorials
 - HuggingFace Transformers: https://huggingface.co/docs/transformers
