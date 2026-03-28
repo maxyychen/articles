@@ -12,4 +12,4 @@ The word "lifecycle" appears across every discipline. In **data management**, th
 
 This diagram from ITIL reminds us that change is never a one-time event. The common thread? **Every lifecycle is a cycle, not a line.** Most frameworks get the linear steps right: define a goal, make a plan, execute, review. But the real value lies in the final question: *How do we keep the momentum going?* It forces you to ask not just "did we succeed?" but "how do we sustain this?" -- and feeds that answer right back into a renewed vision.
 
-
+#ITIL #ChangeManagement #LifecycleManagement #ProjectManagement #DataManagement #ContinuousImprovement #ITServiceManagement
