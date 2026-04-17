@@ -1,102 +1,115 @@
 # Treat Your AI Agent Like a New Hire
 
-**What decades of personnel security already taught us about governing non-human workers.**
+AI agents are the newest workers in your company.
+They have credentials. They access systems. They make decisions.
+They can cause harm — by mistake, or because someone tricked them.
+
+So why do we manage them so differently from human employees?
+
+We don't need to invent a new playbook. We already have one.
+It's called personnel security. It has worked for decades.
+Let's apply it to AI agents.
 
 ---
 
-Would you give a new intern unlimited production database access on their first day? No manager. No acceptable use policy. No background check. Just hand them the admin credentials and tell them to "be careful."
+## 1. Split the job: Segregation of Duties
 
-Of course not.
+**The rule:** No single person should control a whole sensitive transaction.
+The person who prints the check should not be the one who decides the payee.
 
-Then why did we do exactly that with our AI agents?
+**For AI agents:** Don't let one agent do everything.
 
----
+Ask yourself — does one agent:
+- Write the email **and** send it?
+- Write the SQL **and** run it?
+- Propose the code **and** merge it?
+- Read the invoice **and** approve the payment?
 
-## Agents are employees. We just forgot to onboard them.
-
-Every conversation I have about "AI governance" eventually lands on the same realization: this isn't a new problem. It's an old problem wearing new clothes.
-
-An AI agent is a worker. It has credentials. It accesses systems. It makes decisions. It can cause harm — intentionally (through adversarial input) or unintentionally (through error, drift, or hallucination).
-
-The security profession has spent forty years figuring out how to govern workers like that. We call them *humans*. The controls already exist — we just need to apply them to our new non-human colleagues.
-
-Here's the mapping.
+If yes, split the job. Let one agent prepare, and a second agent (or a human) approve.
 
 ---
 
-## 1. Segregation of Duties: the highest-leverage idea you're probably ignoring
+## 2. Give only what is needed: Least Privilege
 
-A classic example from financial controls: the person who prints the checks must not be able to change the payee. The person who requests a payment must not be the one who approves it. One person, end-to-end control of a sensitive transaction, is how fraud happens.
+Give each agent only the tools and data it needs. Nothing more.
 
-Now look at your agent architecture. Is there a single agent that:
-- Drafts the email **and** sends it?
-- Generates the SQL **and** executes it?
-- Proposes the code change **and** merges it to main?
-- Summarizes the invoice **and** approves the payment?
-
-If yes, you've violated segregation of duties. The fix isn't more guardrails on one agent — it's splitting the workflow so a second actor (another agent, or a human) has to approve before execution.
-
-Collusion between two agents is possible but harder, slower, and far more detectable. That's the whole point.
-
-## 2. Role-Based Access Control + Least Privilege
-
-Give each agent the minimum tools and data it needs — not a kitchen-sink toolbelt "in case it needs it later."
-
-- Scope credentials to the specific APIs required.
-- Use just-in-time tokens instead of long-lived keys.
+- Use narrow API permissions.
+- Use short-lived tokens, not permanent keys.
 - Separate "read" agents from "write" agents.
-- Don't let the customer support agent query the HR database because both live in the same vector store.
+- A support agent should not be able to query the HR database.
 
-Fewer privileges → smaller blast radius when (not if) something goes wrong.
-
-## 3. Need-to-Know: data scoping, not just access scoping
-
-RBAC controls which tools the agent can call. Need-to-know controls what data the agent can see. Retrieval filters, row-level security on embeddings, field-level redaction — these are not optional.
-
-An agent that "just summarizes documents" doesn't need to see salary columns.
-
-## 4. The Human Lifecycle, Applied
-
-**Onboarding** → Staged rollout. Sandbox first, then shadow mode, then limited production, then broad deployment. Don't ship an agent the way you'd hire an intern on a handshake.
-
-**Acceptable Use Policy** → Your system prompt, guardrails, and refusal policies are the agent's AUP. Write them like a policy document, not a clever prompt. Version them. Review them.
-
-**Role-based training** → Domain fine-tuning, specialized prompts, curated retrieval corpora. A legal-review agent and a marketing-copy agent should not be running the same base configuration.
-
-**Mandatory vacation / job rotation** → Periodic re-evaluation. Shadow-mode audits where a second model reviews the first's outputs. Catches drift the same way rotation catches human fraud.
-
-**Termination** → Can you revoke an agent's access in under five minutes? Kill switch, credential rotation, session invalidation. If the answer is "we'd have to redeploy," you've failed the termination control.
-
-## 5. Background checks → Model evals and provenance
-
-You wouldn't hire someone without a reference check. Don't deploy a model without:
-- Red-teaming results
-- Capability evals relevant to the agent's role
-- Provenance (who trained it, on what, with what alignment process)
-- A model card, the AI equivalent of a résumé
-
-## 6. Insider threat → Prompt injection is social engineering
-
-The biggest category of human-caused incidents is insider threat — trusted people doing untrusted things, often because they were manipulated.
-
-Prompt injection is the same problem. An agent with legitimate access is tricked — by a malicious document, a poisoned webpage, a crafted email — into acting against your interests. The agent didn't go rogue. It was socially engineered.
-
-Defend accordingly: assume the agent's inputs are hostile, log every tool call, and require human approval for irreversible actions. This is the "dual control" principle your bank uses for wire transfers.
+Less access = smaller damage when something goes wrong.
 
 ---
 
-## What *is* genuinely new
+## 3. Limit what it can see: Need-to-Know
 
-Three things don't map neatly onto the human playbook, and they deserve explicit attention:
+Access to tools is one thing. Access to data is another.
 
-1. **Speed.** A human fraudster processes one transaction at a time. An agent processes ten thousand per minute. Detection windows that were fine for humans are catastrophic for agents.
-
-2. **Non-determinism.** The same input can produce different outputs. Your audit strategy has to handle probabilistic behavior, not just deterministic logs.
-
-3. **Accountability must be pre-assigned to a human decision-maker.** You can fire a human. You can replace a model — but replacement isn't accountability. Before deploying an agent, name the **business owner** who is accepting the risk: the executive whose process the agent serves. They own the outcome, the same way they'd own the outcome of any other business decision. The AI team builds it; the business owner is answerable for it. Without this assignment *before* deployment, you'll find yourself with no one responsible when things go wrong.
-
-These are real differences. But they're refinements to the governance model, not replacements for it.
+An agent that summarizes documents does not need to see salaries.
+Use filters, redaction, and row-level security on the data it retrieves.
 
 ---
 
-#AIGovernance #InformationSecurity #AIAgents #CyberSecurity #RiskManagement
+## 4. Manage the full lifecycle
+
+Treat each agent like a new hire. Follow the same stages.
+
+- **Onboarding:** Start in a sandbox. Then shadow mode. Then limited production. Then full rollout.
+- **Acceptable Use Policy:** The system prompt and guardrails are the agent's rules. Write them carefully. Version them. Review them.
+- **Training:** A legal-review agent and a marketing agent should not share the same setup. Specialize.
+- **Rotation:** Review agent behavior regularly. Use a second model to audit the first.
+- **Termination:** Can you cut off the agent's access in five minutes? If not, you have a problem.
+
+---
+
+## 5. Check before you hire: Evaluation
+
+You would not hire someone without checking their background.
+Do not deploy a model without:
+
+- Red-team test results
+- Evaluations for the agent's specific role
+- Clear information on training and alignment
+- A model card — the AI version of a résumé
+
+---
+
+## 6. Watch for manipulation: Prompt Injection
+
+Most insider incidents happen because someone was tricked, not because they were evil.
+
+The same happens to AI agents.
+A malicious document, a poisoned web page, a crafted email — and the agent acts against you.
+
+**Defenses:**
+- Treat every input as untrusted.
+- Log every tool call.
+- Require human approval for actions that cannot be undone.
+
+This is the same "dual control" principle banks use for wire transfers.
+
+---
+
+## What is really new about AI
+
+Three things do not fit the human playbook:
+
+1. **Speed.** A human fraudster handles one transaction at a time. An agent handles ten thousand per minute.
+
+2. **Non-determinism.** The same input can give different outputs. Your audit must handle this.
+
+3. **Accountability.** You can fire a human. You can replace a model — but replacement is not accountability.
+   Before deployment, name the **business owner** who accepts the risk.
+   The AI team builds the agent. The business owner answers for it.
+
+---
+
+## In one sentence
+
+Your AI agent is a new employee.
+Onboard it. Train it. Limit it. Watch it. And know who is responsible when it fails.
+
+
+
+\#AIGovernance #InformationSecurity #AIAgents #CyberSecurity #RiskManagement
