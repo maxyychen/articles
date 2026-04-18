@@ -65,13 +65,18 @@ Treat each agent like a new hire. Follow the same stages.
 
 ## 5. Check before you hire: Evaluation
 
-You would not hire someone without checking their background.
-Do not deploy a model without:
+Before you hire a person, you check their background. You ask for a résumé. You call references.
 
-- Red-team test results
-- Evaluations for the agent's specific role
-- Clear information on training and alignment
-- A model card — the AI version of a résumé
+Do the same for an AI agent before you deploy it.
+
+Ask four simple questions:
+
+- **Has it been stress-tested?** Someone should try to break it on purpose — feed it tricky inputs, attack prompts, edge cases — and record what happens.
+- **Can it do the job?** Test it on real tasks from its actual role. A customer support agent should be tested on real support cases, not generic benchmarks.
+- **Where did it come from?** Know who built it, what data it was trained on, and how it was made safe. No mystery models in production.
+- **Does it have a résumé?** A short document (often called a "model card") that lists its strengths, weaknesses, and known limits. Read it before you deploy.
+
+If you cannot answer these questions, you are hiring a stranger off the street.
 
 ---
 
