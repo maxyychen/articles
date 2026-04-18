@@ -65,7 +65,7 @@ Treat each agent like a new hire. Follow the same stages.
 
 ## 5. Check before you hire: Evaluation
 
-Before you hire a person, you check their background. You ask for a résumé. You call references.
+Before you hire a person, you check their background. You ask for a resume. You call references.
 
 Do the same for an AI agent before you deploy it.
 
@@ -74,7 +74,7 @@ Ask four simple questions:
 - **Has it been stress-tested?** Someone should try to break it on purpose — feed it tricky inputs, attack prompts, edge cases — and record what happens.
 - **Can it do the job?** Test it on real tasks from its actual role. A customer support agent should be tested on real support cases, not generic benchmarks.
 - **Where did it come from?** Know who built it, what data it was trained on, and how it was made safe. No mystery models in production.
-- **Does it have a résumé?** A short document (often called a "model card") that lists its strengths, weaknesses, and known limits. Read it before you deploy.
+- **Does it have a resume?** A short document (often called a "model card") that lists its strengths, weaknesses, and known limits. Read it before you deploy.
 
 If you cannot answer these questions, you are hiring a stranger off the street.
 
@@ -114,6 +114,8 @@ Three things do not fit the human playbook:
 
 Your AI agent is a new employee.
 Onboard it. Train it. Limit it. Watch it. And know who is responsible when it fails.
+
+---
 
 
 
