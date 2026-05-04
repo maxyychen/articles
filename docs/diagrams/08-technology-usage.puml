@@ -1,0 +1,16 @@
+@startuml
+!include <archimate/Archimate>
+title Technology Usage Viewpoint
+
+Application_Component(crm, "CRM App")
+Application_Component(erp, "ERP App")
+Technology_Service(dbSvc, "Database Service")
+Technology_Service(msgSvc, "Messaging Service")
+Technology_Node(k8s, "Kubernetes Cluster")
+
+Rel_Serving(dbSvc, crm)
+Rel_Serving(dbSvc, erp)
+Rel_Serving(msgSvc, crm)
+Rel_Assignment(k8s, crm)
+Rel_Assignment(k8s, erp)
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+!include <archimate/Archimate>
+title Project Viewpoint
+
+Business_Actor(pm, "Programme Manager")
+Implementation_WorkPackage(prog, "Cloud Migration Programme")
+Implementation_WorkPackage(wp1, "Lift & Shift CRM")
+Implementation_WorkPackage(wp2, "Replatform ERP")
+Implementation_Deliverable(d1, "CRM on AWS")
+Implementation_Deliverable(d2, "ERP on Kubernetes")
+Motivation_Goal(g, "Reduce TCO 30%")
+
+Rel_Assignment(pm, prog)
+Rel_Composition(prog, wp1)
+Rel_Composition(prog, wp2)
+Rel_Realization(wp1, d1)
+Rel_Realization(wp2, d2)
+Rel_Influence(prog, g)
+@enduml

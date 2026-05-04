@@ -1,0 +1,19 @@
+@startuml
+!include <archimate/Archimate>
+title Layered Viewpoint
+
+Business_Actor(cust, "Customer")
+Business_Service(orderSvc, "Ordering Service")
+Business_Process(orderProc, "Order Process")
+Application_Component(orderApp, "Order App")
+Application_Service(orderApi, "Order API")
+Technology_Node(srv, "App Server")
+Technology_Service(dbSvc, "DB Service")
+
+Rel_Serving(orderSvc, cust)
+Rel_Realization(orderProc, orderSvc)
+Rel_Serving(orderApi, orderProc)
+Rel_Realization(orderApp, orderApi)
+Rel_Assignment(srv, orderApp)
+Rel_Serving(dbSvc, srv)
+@enduml

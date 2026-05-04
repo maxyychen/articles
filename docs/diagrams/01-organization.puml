@@ -1,0 +1,17 @@
+@startuml
+!include <archimate/Archimate>
+title Organization Viewpoint
+
+Business_Location(hq, "Head Office")
+Business_Actor(company, "Acme Corp")
+Business_Actor(salesDept, "Sales Department")
+Business_Actor(itDept, "IT Department")
+Business_Role(salesMgr, "Sales Manager")
+Business_Role(devLead, "Dev Lead")
+
+Rel_Composition(company, salesDept)
+Rel_Composition(company, itDept)
+Rel_Assignment(salesDept, salesMgr)
+Rel_Assignment(itDept, devLead)
+Rel_Association(company, hq)
+@enduml

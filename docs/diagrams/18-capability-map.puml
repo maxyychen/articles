@@ -1,0 +1,18 @@
+@startuml
+!include <archimate/Archimate>
+title Capability Map Viewpoint
+
+Strategy_Capability(cust, "Customer Management")
+Strategy_Capability(acq, "Acquisition")
+Strategy_Capability(ret, "Retention")
+Strategy_Capability(svc, "Service")
+Strategy_Capability(prod, "Product Management")
+Strategy_Capability(plan, "Planning")
+Strategy_Capability(launch, "Launch")
+
+Rel_Composition(cust, acq)
+Rel_Composition(cust, ret)
+Rel_Composition(cust, svc)
+Rel_Composition(prod, plan)
+Rel_Composition(prod, launch)
+@enduml

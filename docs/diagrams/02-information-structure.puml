@@ -1,0 +1,15 @@
+@startuml
+!include <archimate/Archimate>
+title Information Structure Viewpoint
+
+Business_Object(customer, "Customer")
+Business_Object(order, "Order")
+Business_Object(invoice, "Invoice")
+Application_DataObject(custRecord, "Customer Record (DB)")
+Business_Representation(invoicePdf, "Invoice PDF")
+
+Rel_Association(customer, order)
+Rel_Association(order, invoice)
+Rel_Realization(custRecord, customer)
+Rel_Realization(invoicePdf, invoice)
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+!include <archimate/Archimate>
+title Requirements Realization Viewpoint
+
+Motivation_Goal(g, "24/7 Self-service")
+Motivation_Requirement(r1, "Available 99.9%")
+Motivation_Requirement(r2, "Multi-channel access")
+Business_Service(portal, "Self-service Portal")
+Application_Component(portalApp, "Portal Web App")
+
+Rel_Realization(r1, g)
+Rel_Realization(r2, g)
+Rel_Realization(portal, r1)
+Rel_Realization(portal, r2)
+Rel_Realization(portalApp, portal)
+@enduml

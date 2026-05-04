@@ -1,0 +1,23 @@
+@startuml
+!include <archimate/Archimate>
+title Motivation Viewpoint
+
+Motivation_Stakeholder(s, "Customer")
+Motivation_Driver(d, "Customer Experience")
+Motivation_Assessment(a, "Slow checkout (NPS -10)")
+Motivation_Goal(g, "Improve Checkout")
+Motivation_Outcome(o, "Cart abandonment < 30%")
+Motivation_Requirement(r, "1-click pay")
+Motivation_Constraint(c, "PCI-DSS compliance")
+Motivation_Principle(p, "Security by default")
+Motivation_Value(v, "Trust")
+
+Rel_Association(s, d)
+Rel_Association(d, a)
+Rel_Influence(a, g)
+Rel_Realization(o, g)
+Rel_Realization(r, o)
+Rel_Influence(c, r)
+Rel_Influence(p, r)
+Rel_Realization(v, g)
+@enduml

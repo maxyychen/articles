@@ -1,0 +1,17 @@
+@startuml
+!include <archimate/Archimate>
+title Application Cooperation Viewpoint
+
+Application_Component(orderApp, "Order App")
+Application_Component(invApp, "Inventory App")
+Application_Component(shipApp, "Shipping App")
+Application_Service(stockChk, "Stock Check")
+Application_Service(shipBook, "Shipment Booking")
+Application_DataObject(orderData, "Order Data")
+
+Rel_Serving(stockChk, orderApp)
+Rel_Realization(invApp, stockChk)
+Rel_Serving(shipBook, orderApp)
+Rel_Realization(shipApp, shipBook)
+Rel_Access(orderApp, orderData)
+@enduml

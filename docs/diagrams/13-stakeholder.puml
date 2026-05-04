@@ -1,0 +1,16 @@
+@startuml
+!include <archimate/Archimate>
+title Stakeholder Viewpoint
+
+Motivation_Stakeholder(cfo, "CFO")
+Motivation_Stakeholder(ceo, "CEO")
+Motivation_Driver(cost, "Cost Pressure")
+Motivation_Driver(growth, "Market Growth")
+Motivation_Assessment(legacy, "Legacy systems are costly")
+Motivation_Goal(reduceOpex, "Reduce OpEx 20%")
+
+Rel_Association(cfo, cost)
+Rel_Association(ceo, growth)
+Rel_Association(cost, legacy)
+Rel_Influence(legacy, reduceOpex)
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+!include <archimate/Archimate>
+title Goal Realization Viewpoint
+
+Motivation_Goal(growth, "Grow Online Sales")
+Motivation_Outcome(rev, "+15% Online Revenue")
+Motivation_Requirement(mobileFirst, "Mobile-first UX")
+Motivation_Requirement(checkout3s, "Checkout < 3s")
+Motivation_Principle(cloudFirst, "Cloud-first")
+
+Rel_Realization(rev, growth)
+Rel_Realization(mobileFirst, rev)
+Rel_Realization(checkout3s, rev)
+Rel_Influence(cloudFirst, mobileFirst)
+@enduml

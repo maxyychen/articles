@@ -1,0 +1,15 @@
+@startuml
+!include <archimate/Archimate>
+title Technology Viewpoint
+
+Technology_Node(appServer, "Application Server")
+Technology_Device(dbHost, "DB Host")
+Technology_SystemSoftware(linux, "Linux OS")
+Technology_SystemSoftware(postgres, "PostgreSQL")
+Technology_CommunicationNetwork(lan, "Corporate LAN")
+
+Rel_Composition(appServer, linux)
+Rel_Composition(dbHost, postgres)
+Rel_Association(appServer, lan)
+Rel_Association(dbHost, lan)
+@enduml

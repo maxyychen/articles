@@ -1,0 +1,15 @@
+@startuml
+!include <archimate/Archimate>
+title Application Usage Viewpoint
+
+Business_Process(checkout, "Checkout")
+Application_Service(payApi, "Payment API")
+Application_Service(invSvc, "Inventory Service")
+Application_Component(payApp, "Payment App")
+Application_Component(invApp, "Inventory App")
+
+Rel_Serving(payApi, checkout)
+Rel_Serving(invSvc, checkout)
+Rel_Realization(payApp, payApi)
+Rel_Realization(invApp, invSvc)
+@enduml

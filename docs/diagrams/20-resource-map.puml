@@ -1,0 +1,17 @@
+@startuml
+!include <archimate/Archimate>
+title Resource Map Viewpoint
+
+Strategy_Resource(people, "Workforce")
+Strategy_Resource(devs, "Developers")
+Strategy_Resource(designers, "UX Designers")
+Strategy_Resource(infra, "Infrastructure")
+Strategy_Resource(cloud, "Cloud Budget")
+Strategy_Capability(buildCap, "Software Engineering")
+
+Rel_Composition(people, devs)
+Rel_Composition(people, designers)
+Rel_Composition(infra, cloud)
+Rel_Assignment(devs, buildCap)
+Rel_Assignment(cloud, buildCap)
+@enduml

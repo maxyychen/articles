@@ -1,0 +1,15 @@
+@startuml
+!include <archimate/Archimate>
+title Migration Viewpoint
+
+Implementation_Plateau(asis, "Plateau: As-Is (2025)")
+Implementation_Plateau(interim, "Plateau: Interim (2026 Q2)")
+Implementation_Plateau(tobe, "Plateau: To-Be (2027)")
+Implementation_Gap(gap1, "Gap: Legacy CRM")
+Implementation_Gap(gap2, "Gap: On-prem ERP")
+
+Rel_Triggering(asis, interim)
+Rel_Triggering(interim, tobe)
+Rel_Association(asis, gap1)
+Rel_Association(interim, gap2)
+@enduml

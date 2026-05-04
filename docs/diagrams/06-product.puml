@@ -1,0 +1,15 @@
+@startuml
+!include <archimate/Archimate>
+title Product Viewpoint
+
+Business_Product(insur, "Auto Insurance Policy")
+Business_Service(claims, "Claims Service")
+Business_Service(quotes, "Quote Service")
+Business_Contract(contract, "Policy Contract")
+Motivation_Value(peace, "Peace of Mind")
+
+Rel_Composition(insur, claims)
+Rel_Composition(insur, quotes)
+Rel_Composition(insur, contract)
+Rel_Realization(insur, peace)
+@enduml

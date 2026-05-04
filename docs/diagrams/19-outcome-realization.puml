@@ -1,0 +1,17 @@
+@startuml
+!include <archimate/Archimate>
+title Outcome Realization Viewpoint
+
+Motivation_Stakeholder(board, "Board")
+Motivation_Goal(g, "Profitable Growth")
+Motivation_Outcome(o1, "EBITDA +5%")
+Motivation_Outcome(o2, "NPS > 50")
+Strategy_Capability(cap, "Customer Service")
+Business_Service(svc, "24/7 Support")
+
+Rel_Association(board, g)
+Rel_Realization(o1, g)
+Rel_Realization(o2, g)
+Rel_Realization(cap, o2)
+Rel_Realization(svc, cap)
+@enduml

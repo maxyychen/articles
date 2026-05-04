@@ -1,0 +1,17 @@
+@startuml
+!include <archimate/Archimate>
+title Implementation and Migration Viewpoint
+
+Motivation_Goal(g, "Cloud-First by 2027")
+Implementation_Plateau(asis, "As-Is")
+Implementation_Plateau(tobe, "To-Be: Cloud-Native")
+Implementation_Gap(gap, "Legacy DC dependency")
+Implementation_WorkPackage(wp, "DC Exit Programme")
+Implementation_Deliverable(del, "All workloads in cloud")
+
+Rel_Realization(tobe, g)
+Rel_Triggering(asis, tobe)
+Rel_Association(asis, gap)
+Rel_Realization(wp, del)
+Rel_Realization(del, tobe)
+@enduml

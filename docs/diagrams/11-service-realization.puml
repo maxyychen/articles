@@ -1,0 +1,17 @@
+@startuml
+!include <archimate/Archimate>
+title Service Realization Viewpoint
+
+Business_Actor(cust, "Customer")
+Business_Service(loanSvc, "Loan Application Service")
+Business_Process(submit, "Submit Application")
+Business_Process(assess, "Assess Credit")
+Business_Actor(officer, "Loan Officer")
+Application_Service(creditApi, "Credit Score API")
+
+Rel_Serving(loanSvc, cust)
+Rel_Realization(submit, loanSvc)
+Rel_Realization(assess, loanSvc)
+Rel_Assignment(officer, assess)
+Rel_Serving(creditApi, assess)
+@enduml

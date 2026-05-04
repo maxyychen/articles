@@ -1,0 +1,15 @@
+@startuml
+!include <archimate/Archimate>
+title Physical Viewpoint
+
+Physical_Facility(plant, "Production Plant")
+Physical_Equipment(robot, "Assembly Robot")
+Physical_Equipment(conveyor, "Conveyor Belt")
+Physical_Material(parts, "Raw Parts")
+Physical_DistributionNetwork(roads, "Road Network")
+
+Rel_Composition(plant, robot)
+Rel_Composition(plant, conveyor)
+Rel_Flow(parts, robot)
+Rel_Association(plant, roads)
+@enduml

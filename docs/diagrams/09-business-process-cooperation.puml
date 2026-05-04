@@ -1,0 +1,18 @@
+@startuml
+!include <archimate/Archimate>
+title Business Process Cooperation Viewpoint
+
+Business_Actor(salesDept, "Sales")
+Business_Actor(financeDept, "Finance")
+Business_Process(takeOrder, "Take Order")
+Business_Process(invoiceProc, "Invoice Customer")
+Business_Object(orderDoc, "Order")
+Business_Event(orderConfirmed, "Order Confirmed")
+
+Rel_Assignment(salesDept, takeOrder)
+Rel_Assignment(financeDept, invoiceProc)
+Rel_Triggering(takeOrder, orderConfirmed)
+Rel_Triggering(orderConfirmed, invoiceProc)
+Rel_Access(takeOrder, orderDoc)
+Rel_Access(invoiceProc, orderDoc)
+@enduml

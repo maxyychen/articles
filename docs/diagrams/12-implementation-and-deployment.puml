@@ -1,0 +1,13 @@
+@startuml
+!include <archimate/Archimate>
+title Implementation and Deployment Viewpoint
+
+Application_Component(orderApp, "Order Service")
+Technology_Artifact(orderJar, "order-service.jar")
+Technology_Node(prodSrv, "Prod App Server")
+Technology_Node(stagingSrv, "Staging Server")
+
+Rel_Realization(orderJar, orderApp)
+Rel_Assignment(prodSrv, orderJar)
+Rel_Assignment(stagingSrv, orderJar)
+@enduml

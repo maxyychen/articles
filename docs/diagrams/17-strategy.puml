@@ -1,0 +1,15 @@
+@startuml
+!include <archimate/Archimate>
+title Strategy Viewpoint
+
+Strategy_CourseOfAction(coa, "Digital Transformation")
+Strategy_Capability(salesCap, "Digital Sales")
+Strategy_Capability(dataCap, "Data Analytics")
+Strategy_Resource(team, "Data Team")
+Motivation_Outcome(growth, "+20% Online Sales")
+
+Rel_Realization(salesCap, coa)
+Rel_Realization(dataCap, coa)
+Rel_Assignment(team, dataCap)
+Rel_Realization(coa, growth)
+@enduml
