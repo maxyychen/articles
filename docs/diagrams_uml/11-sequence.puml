@@ -1,0 +1,29 @@
+@startuml
+title UML — Sequence Diagram
+
+actor Customer
+participant "Web UI"      as UI
+participant "API Gateway" as API
+participant "Order Svc"   as OS
+database    "DB"          as DB
+participant "Payment GW"  as PG
+
+Customer -> UI  : place order
+activate UI
+UI       -> API : POST /orders
+activate API
+API      -> OS  : createOrder()
+activate OS
+OS       -> DB  : INSERT
+DB       --> OS : orderId
+OS       -> PG  : charge()
+PG       --> OS : approved
+OS       --> API: 201 Created
+deactivate OS
+API      --> UI : 201
+deactivate API
+UI       --> Customer : confirmation
+deactivate UI
+
+note right of PG: External 3rd-party\nover HTTPS
+@enduml

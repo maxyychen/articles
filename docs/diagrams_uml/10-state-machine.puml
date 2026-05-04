@@ -1,0 +1,21 @@
+@startuml
+title UML — State Machine Diagram
+
+[*] --> Pending : create
+
+state Pending {
+  [*] --> AwaitingPayment
+  AwaitingPayment --> PaymentReceived : pay()
+}
+
+Pending --> Confirmed   : confirm()
+Pending --> Cancelled   : cancel()
+Confirmed --> Shipped   : ship()
+Shipped   --> Delivered : deliver()
+Shipped   --> Returned  : returnRequest()
+Returned  --> Refunded  : refund()
+
+Delivered --> [*]
+Cancelled --> [*]
+Refunded  --> [*]
+@enduml

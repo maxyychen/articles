@@ -1,0 +1,27 @@
+@startuml
+title UML — Use Case Diagram
+
+left to right direction
+
+actor Customer
+actor "Payment Gateway" as PG <<external>>
+actor Admin
+
+rectangle "Online Store" {
+  usecase "Browse Products"   as UC1
+  usecase "Place Order"       as UC2
+  usecase "Make Payment"      as UC3
+  usecase "Track Shipment"    as UC4
+  usecase "Manage Catalog"    as UC5
+  usecase "Login"             as UC6
+}
+
+Customer --> UC1
+Customer --> UC2
+Customer --> UC4
+Admin    --> UC5
+UC2 ..> UC3 : <<include>>
+UC2 ..> UC6 : <<include>>
+UC3 --> PG
+UC4 ..> UC6 : <<include>>
+@enduml

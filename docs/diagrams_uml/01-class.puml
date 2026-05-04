@@ -1,0 +1,38 @@
+@startuml
+title UML — Class Diagram
+
+interface Payable {
+  + pay(amount): void
+}
+
+class Customer {
+  - id: Long
+  - name: String
+  + getName(): String
+}
+
+class Order {
+  - orderId: Long
+  - date: Date
+  + total(): Money
+}
+
+class Product {
+  - sku: String
+  - price: Money
+}
+
+abstract class PaymentMethod {
+  + {abstract} authorize(): boolean
+}
+
+class CreditCard
+class PayPal
+
+PaymentMethod <|-- CreditCard
+PaymentMethod <|-- PayPal
+Order ..|> Payable
+Customer "1" o-- "*" Order : places
+Order "*" *-- "1..*" Product : contains
+Order --> PaymentMethod : uses
+@enduml

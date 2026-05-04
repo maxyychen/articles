@@ -1,0 +1,28 @@
+@startuml
+title UML — Component Diagram
+
+package "Frontend" {
+  [Web UI]
+  [Mobile App]
+}
+
+package "Backend" {
+  [API Gateway]
+  [Auth Service]
+  [Order Service]
+  [Notification Service]
+}
+
+database "PostgreSQL" as DB
+queue "Kafka" as MQ
+
+[Web UI]      --( HTTPS
+[Mobile App]  --( HTTPS
+HTTPS )--    [API Gateway]
+
+[API Gateway] --> [Auth Service]
+[API Gateway] --> [Order Service]
+[Order Service] --> DB
+[Order Service] --> MQ
+MQ --> [Notification Service]
+@enduml

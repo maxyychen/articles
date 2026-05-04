@@ -1,0 +1,28 @@
+@startuml
+title UML — Activity Diagram
+
+start
+:Receive Order;
+
+if (In stock?) then (yes)
+  fork
+    :Reserve items;
+  fork again
+    :Charge payment;
+  end fork
+  if (Payment OK?) then (yes)
+    :Pack order;
+    :Ship order;
+    :Notify customer;
+    stop
+  else (no)
+    :Release reservation;
+    :Notify failure;
+    stop
+  endif
+else (no)
+  :Backorder;
+  :Notify customer;
+  stop
+endif
+@enduml

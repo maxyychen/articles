@@ -1,0 +1,28 @@
+@startuml
+title UML — Object Diagram
+
+object "alice : Customer" as alice {
+  id = 42
+  name = "Alice"
+}
+
+object "ord1001 : Order" as ord1 {
+  orderId = 1001
+  date = "2026-05-01"
+  total = 129.50
+}
+
+object "p_widget : Product" as p1 {
+  sku = "WGT-100"
+  price = 49.50
+}
+
+object "p_gadget : Product" as p2 {
+  sku = "GDG-200"
+  price = 80.00
+}
+
+alice --> ord1 : places
+ord1 --> p1 : contains
+ord1 --> p2 : contains
+@enduml

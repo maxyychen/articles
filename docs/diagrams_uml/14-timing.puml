@@ -1,0 +1,32 @@
+@startuml
+title UML — Timing Diagram
+
+robust  "User"   as U
+concise "Web UI" as W
+concise "Server" as S
+
+@0
+U is Idle
+W is Idle
+S is Idle
+
+@100
+U is Active
+W is Loading
+
+@250
+W is Idle  : page rendered
+
+@300
+U is Active
+S is Working
+
+@500
+S is Idle  : response sent
+
+@600
+U is Idle
+
+highlight 100 to 250 #LightBlue : page load
+highlight 300 to 500 #LightYellow : API call
+@enduml

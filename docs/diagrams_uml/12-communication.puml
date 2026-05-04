@@ -1,0 +1,21 @@
+@startuml
+title UML — Communication Diagram (PlantUML approximation)
+
+' PlantUML doesn't have a dedicated communication-diagram syntax;
+' we use object diagram + numbered messages on the links.
+
+object Customer
+object UI
+object API
+object OrderSvc
+object DB
+
+Customer ..> UI       : 1 : place order
+UI       ..> API      : 2 : POST /orders
+API      ..> OrderSvc : 3 : createOrder()
+OrderSvc ..> DB       : 4 : INSERT
+DB       ..> OrderSvc : 5 : orderId
+OrderSvc ..> API      : 6 : 201
+API      ..> UI       : 7 : 201
+UI       ..> Customer : 8 : confirmation
+@enduml

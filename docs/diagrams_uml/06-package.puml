@@ -1,0 +1,27 @@
+@startuml
+title UML — Package Diagram
+
+package "com.acme.web" {
+  class OrderController
+}
+
+package "com.acme.service" {
+  class OrderService
+  class PaymentService
+}
+
+package "com.acme.repo" {
+  class OrderRepository
+  class CustomerRepository
+}
+
+package "com.acme.domain" {
+  class Order
+  class Customer
+}
+
+"com.acme.web"     ..> "com.acme.service" : uses
+"com.acme.service" ..> "com.acme.repo"    : uses
+"com.acme.service" ..> "com.acme.domain"
+"com.acme.repo"    ..> "com.acme.domain"
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+title UML — Profile Diagram
+
+package "Java EE Profile" <<Profile>> {
+  class Entity     <<stereotype>>
+  class Service    <<stereotype>>
+  class Repository <<stereotype>>
+  class Controller <<stereotype>>
+}
+
+package "Application Model" {
+  class Customer       <<Entity>>
+  class OrderService   <<Service>>
+  class OrderRepo      <<Repository>>
+  class OrderApi       <<Controller>>
+}
+
+OrderApi   ..> OrderService : uses
+OrderService ..> OrderRepo  : uses
+OrderRepo  ..> Customer
+@enduml

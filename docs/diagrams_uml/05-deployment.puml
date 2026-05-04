@@ -1,0 +1,30 @@
+@startuml
+title UML — Deployment Diagram
+
+node "Browser\n<<device>>" as browser
+
+cloud "AWS" {
+  node "ALB\n<<load balancer>>" as lb
+
+  node "EC2 web-1\n<<server>>" as web1 {
+    artifact "frontend.war"
+  }
+
+  node "EC2 web-2\n<<server>>" as web2 {
+    artifact "frontend.war" as fw2
+  }
+
+  node "EC2 app-1\n<<server>>" as app1 {
+    artifact "backend.jar"
+  }
+
+  database "RDS PostgreSQL" as db
+}
+
+browser --> lb : HTTPS
+lb --> web1
+lb --> web2
+web1 --> app1 : REST
+web2 --> app1 : REST
+app1 --> db   : JDBC
+@enduml

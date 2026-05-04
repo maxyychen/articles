@@ -1,0 +1,31 @@
+@startuml
+title UML — Interaction Overview Diagram (PlantUML approximation)
+
+' Interaction overviews mix activity flow with refs to sequences.
+' We approximate via activity-diagram partitions; each partition
+' would normally be a separate sequence diagram.
+
+start
+
+partition "ref: Login Sequence" {
+  :Customer enters credentials;
+  :Validate token;
+}
+
+if (Authenticated?) then (yes)
+  partition "ref: Browse Products Sequence" {
+    :Search catalogue;
+    :Render results;
+  }
+  partition "ref: Place Order Sequence" {
+    :Add to cart;
+    :Checkout;
+    :Pay;
+  }
+  :Show confirmation;
+  stop
+else (no)
+  :Show login error;
+  stop
+endif
+@enduml

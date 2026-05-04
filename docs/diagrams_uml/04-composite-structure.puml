@@ -1,0 +1,23 @@
+@startuml
+title UML — Composite Structure Diagram
+
+class Car {
+  - vin: String
+}
+
+class Engine {
+  + start(): void
+  + stop(): void
+}
+
+class Wheel {
+  - position: Position
+}
+
+class Transmission
+
+Car *-- "1" Engine        : engine
+Car *-- "4" Wheel         : wheels
+Car *-- "1" Transmission  : transmission
+Engine --> Transmission   : drives
+@enduml
