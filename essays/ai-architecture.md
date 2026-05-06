@@ -22,11 +22,15 @@ Once architecture is explicit, it feeds the next step. AI generating code from r
 
 ## The Honest Caveat
 
-AI handles generation well. It doesn't understand your org's politics, your legacy constraints, or your regulator's requirements. The architects who thrive will use AI for generation and invest their judgment in decisions only an embedded human can make.
+AI is a fast, context-free generator. That's its strength — and its blind spot.
+
+It knows how systems *generally* should be designed. What it doesn't know is your world: which team refuses to share a database, which legacy system is too fragile to touch, which compliance requirement rules out an otherwise elegant solution, which architectural decision from five years ago still constrains everything today.
+
+These invisible constraints are where architectures succeed or fail. AI will confidently produce a technically sound design that is organizationally impossible to implement.
+
+This is why the architect's role doesn't disappear — it sharpens. The diagramming, the documentation, the option generation — AI handles all of that now. What remains is judgment under constraint: making the right call given context that never fully fits into a prompt.
 
 The diagram is not the architecture. The architect is.
-
-But without the diagram, the architecture is just assumptions — and AI-generated code built on invisible assumptions is a liability, not an asset.
 
 ## Where to Start
 
