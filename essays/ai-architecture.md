@@ -40,4 +40,3 @@ The step you've been skipping is the one that matters most.
 
 ---
 
-*Are you integrating architecture into your AI workflow? I'd love to hear what's working.*
