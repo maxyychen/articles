@@ -1,0 +1,39 @@
+# AI Can Turn Requirements into Code. But Something Important Is Missing in Between.
+
+The promise is compelling: feed AI your user requirements, get working code out the other side. And it works — faster than most developers can finish their coffee.
+
+But watch what gets skipped.
+
+## The Missing Middle
+
+Requirements go in. Code comes out. What's in between? Architecture.
+
+This is where the real thinking happens — how components fit together, where data flows, who owns what. When we jump straight from requirements to AI-generated code, we don't eliminate this step. We make it invisible. The architecture still exists, buried inside the code, implicit and unexamined. Nobody reviewed it. It was never a decision; it was an accident.
+
+This is how you get AI-generated code that works but doesn't scale. That passes tests but resists change.
+
+## Architecture-as-Code Closes the Gap
+
+The pipeline should be: Requirements → Architecture → Code.
+
+Tools like PlantUML represent architecture as plain text — reviewable, version-controlled, living in your repository. Describe your system in plain English, and AI generates a complete architecture diagram in seconds. Multiple views, different levels of detail, all from a conversation.
+
+Once architecture is explicit, it feeds the next step. AI generating code from requirements *and* a validated architecture is far more reliable. The architecture constrains the solution space — the generated code doesn't just work, it fits.
+
+## The Honest Caveat
+
+AI handles generation well. It doesn't understand your org's politics, your legacy constraints, or your regulator's requirements. The architects who thrive will use AI for generation and invest their judgment in decisions only an embedded human can make.
+
+The diagram is not the architecture. The architect is.
+
+But without the diagram, the architecture is just assumptions — and AI-generated code built on invisible assumptions is a liability, not an asset.
+
+## Where to Start
+
+Before asking AI to write the code, ask it to design the architecture first. Challenge it. Refine it. Then generate the code from that foundation.
+
+The step you've been skipping is the one that matters most.
+
+---
+
+*Are you integrating architecture into your AI workflow? I'd love to hear what's working.*
