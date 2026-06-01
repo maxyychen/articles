@@ -26,6 +26,5 @@ The teams that succeed with AI coding will be the ones already fluent in DevSecO
 
 ---
 
-*How is your team integrating AI into its delivery pipeline?*
 
 `#DevSecOps` `#AICoding` `#DevOps` `#SoftwareEngineering` `#Cybersecurity`
