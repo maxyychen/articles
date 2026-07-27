@@ -1,5 +1,7 @@
 # It's Not Your Job That Agentic AI Redesigns. It's Your Workflow.
 
+![The old model of rigid scripting versus the new model of agentic AI sensing, reasoning, and acting, with a human handling the exception boundary — illustrated across back office, R&D, healthcare, and software delivery](workflow_with_ai.png)
+
 The usual question is "which jobs get automated?"
 
 Wrong question. A job was never one thing — it's a bundle of workflows. Each workflow is just a trigger, a sequence of decisions, and a handoff to whoever owns the next step.
