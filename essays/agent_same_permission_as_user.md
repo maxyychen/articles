@@ -1,4 +1,4 @@
-# The Simplest Way to Embed Agentic AI to your BI system: It Didn't Break Your Security Model — It Inherited It
+# The Simplest Way to Embed Agentic AI to your data platform: It Didn't Break Your Security Model — It Inherited It
 
 Before AI agents, the workflow was simple.
 
